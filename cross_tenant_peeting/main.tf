@@ -1,3 +1,10 @@
+provider "azurerm" {
+  subscription_id = ""
+  client_id =       ""
+  client_secret = ""
+  tenant_id =       ""
+  version         = "=1.35.0"
+}
 data "azurerm_virtual_network" "target" {
   name                = "tf1-vnet-01"
   resource_group_name = "tf1"
@@ -7,8 +14,6 @@ data "azurerm_virtual_network" "remote" {
   resource_group_name = "tf2"
   provider = "azurerm.remote"
 }
-
-
 module "vnet_peering_to_domain_network" {
   source = "..\\module\\cross_tenant_peering"
   cross_tenant_client_id  = "xxxxxxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxxx"
