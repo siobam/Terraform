@@ -1,0 +1,129 @@
+"${index}": {
+    "position": {
+        "x": ${position_x},
+        "y": ${position_y},
+        "colSpan": ${colSpan},
+        "rowSpan": ${rowSpan}
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "name": "sharedTimeRange",
+          "isOptional": true
+        },
+        {
+          "name": "options",
+          "value": {
+            "chart": {
+              "metrics": [
+                {
+                  "resourceMetadata": {
+                    "id": "${resourceMetadataId}"
+                  },
+                  "name": "CpuPercentage",
+                  "aggregationType": 4,
+                  "namespace": "microsoft.web/serverfarms",
+                  "metricVisualization": {
+                    "displayName": "CPU Percentage",
+                    "resourceDisplayName": "${resourceDisplayName}"
+                  }
+                },
+                {
+                  "resourceMetadata": {
+                    "id": "${resourceMetadataId}"
+                  },
+                  "name": "MemoryPercentage",
+                  "aggregationType": 4,
+                  "namespace": "microsoft.web/serverfarms",
+                  "metricVisualization": {
+                    "displayName": "Memory Percentage"
+                  }
+                }
+              ],
+              "title": "CPU Percentage",
+              "titleKind": 2,
+              "visualization": {
+                "chartType": 2,
+                "legendVisualization": {
+                  "isVisible": true,
+                  "position": 2,
+                  "hideSubtitle": false
+                },
+                "axisVisualization": {
+                  "x": {
+                    "isVisible": true,
+                    "axisType": 2
+                  },
+                  "y": {
+                    "isVisible": true,
+                    "axisType": 1
+                  }
+                }
+              }
+            },
+            "version": 2
+          },
+          "isOptional": true
+        }
+      ],
+      "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+      "settings": {
+        "content": {
+          "options": {
+            "chart": {
+              "metrics": [
+                {
+                  "resourceMetadata": {
+                    "id": "${resourceMetadataId}"
+                  },
+                  "name": "CpuPercentage",
+                  "aggregationType": 4,
+                  "namespace": "microsoft.web/serverfarms",
+                  "metricVisualization": {
+                    "displayName": "CPU Percentage",
+                    "resourceDisplayName": "${resourceDisplayName}"
+                  }
+                },
+                {
+                  "resourceMetadata": {
+                    "id": "${resourceMetadataId}"
+                  },
+                  "name": "MemoryPercentage",
+                  "aggregationType": 4,
+                  "namespace": "microsoft.web/serverfarms",
+                  "metricVisualization": {
+                    "displayName": "Memory Percentage"
+                  }
+                }
+              ],
+              "title": "CPU Percentage",
+              "titleKind": 2,
+              "visualization": {
+                "chartType": 2,
+                "legendVisualization": {
+                  "isVisible": true,
+                  "position": 2,
+                  "hideSubtitle": false
+                },
+                "axisVisualization": {
+                  "x": {
+                    "isVisible": true,
+                    "axisType": 2
+                  },
+                  "y": {
+                    "isVisible": true,
+                    "axisType": 1
+                  }
+                },
+                "disablePinning": true
+              },
+              "filterCollection": {
+                "filters": []
+              }
+            },
+            "version": 2
+          }
+        }
+      }
+    }
+}

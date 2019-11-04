@@ -1,0 +1,86 @@
+"${index}": {
+    "position": {
+        "x": ${position_x},
+        "y": ${position_y},
+        "colSpan": ${colSpan},
+        "rowSpan": ${rowSpan}
+    },
+    "metadata": {
+        "inputs": [
+          {
+            "name": "sharedTimeRange",
+            "isOptional": true
+          },
+          {
+            "name": "options",
+            "value": {
+              "chart": {
+                "metrics": [
+                  {
+                    "resourceMetadata": {
+                      "id": "${resourceMetadataId}"
+                    },
+                    "name": "dtu_consumption_percent",
+                    "aggregationType": 4,
+                    "metricVisualization": {
+                      "resourceDisplayName": "${resourceDisplayName}"
+                    }
+                  }
+                ],
+                "title": "Compute utilization",
+                "titleKind": 2,
+                "visualization": {
+                  "chartType": 2
+                },
+                "openBladeOnClick": {
+                  "openBlade": true
+                }
+              }
+            },
+            "isOptional": true
+          }
+        ],
+        "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+        "settings": {
+          "content": {
+            "options": {
+              "chart": {
+                "metrics": [
+                  {
+                    "resourceMetadata": {
+                      "id": "${resourceMetadataId}"
+                    },
+                    "name": "dtu_consumption_percent",
+                    "aggregationType": 4,
+                    "metricVisualization": {
+                      "resourceDisplayName": "${resourceDisplayName}"
+                    }
+                  }
+                ],
+                "title": "Compute utilization",
+                "titleKind": 2,
+                "visualization": {
+                  "chartType": 2,
+                  "disablePinning": true
+                },
+                "openBladeOnClick": {
+                  "openBlade": true
+                },
+                "filterCollection": {
+                  "filters": []
+                }
+              }
+            }
+          }
+        },
+        "filters": {
+          "MsPortalFx_TimeRange": {
+            "model": {
+              "format": "local",
+              "granularity": "auto",
+              "relative": "60m"
+            }
+          }
+        }
+      }
+}

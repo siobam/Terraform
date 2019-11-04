@@ -1,0 +1,131 @@
+"${index}": {
+    "position": {
+        "x": ${position_x},
+        "y": ${position_y},
+        "colSpan": ${colSpan},
+        "rowSpan": ${rowSpan}
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "name": "sharedTimeRange",
+          "isOptional": true
+        },
+        {
+          "name": "options",
+          "value": {
+            "chart": {
+              "metrics": [
+                {
+                  "resourceMetadata": {
+                    "id": "${resourceMetadataId}"
+                  },
+                  "name": "AverageResponseTime",
+                  "aggregationType": 1,
+                  "namespace": "microsoft.web/sites",
+                  "metricVisualization": {
+                    "displayName": "Average Response Time",
+                    "resourceDisplayName": "${resourceDisplayName}"
+                  }
+                },
+                {
+                  "resourceMetadata": {
+                    "id": "${resourceMetadataId}"
+                  },
+                  "name": "Http5xx",
+                  "aggregationType": 1,
+                  "namespace": "microsoft.web/sites",
+                  "metricVisualization": {
+                    "displayName": "Http Server Errors",
+                    "resourceDisplayName": "${resourceDisplayName}"
+                  }
+                }
+              ],
+              "title": "Response time, Server error",
+              "titleKind": 2,
+              "visualization": {
+                "chartType": 2,
+                "legendVisualization": {
+                  "isVisible": true,
+                  "position": 2,
+                  "hideSubtitle": false
+                },
+                "axisVisualization": {
+                  "x": {
+                    "isVisible": true,
+                    "axisType": 2
+                  },
+                  "y": {
+                    "isVisible": true,
+                    "axisType": 1
+                  }
+                }
+              }
+            },
+            "version": 2
+          },
+          "isOptional": true
+        }
+      ],
+      "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+      "settings": {
+        "content": {
+          "options": {
+            "chart": {
+              "metrics": [
+                {
+                  "resourceMetadata": {
+                    "id": "${resourceMetadataId}"
+                  },
+                  "name": "AverageResponseTime",
+                  "aggregationType": 1,
+                  "namespace": "microsoft.web/sites",
+                  "metricVisualization": {
+                    "displayName": "Average Response Time",
+                    "resourceDisplayName": "${resourceDisplayName}"
+                  }
+                },
+                {
+                  "resourceMetadata": {
+                    "id": "${resourceMetadataId}"
+                  },
+                  "name": "Http5xx",
+                  "aggregationType": 1,
+                  "namespace": "microsoft.web/sites",
+                  "metricVisualization": {
+                    "displayName": "Http Server Errors",
+                    "resourceDisplayName": "${resourceDisplayName}"
+                  }
+                }
+              ],
+              "title": "Response time, Server error",
+              "titleKind": 2,
+              "visualization": {
+                "chartType": 2,
+                "legendVisualization": {
+                  "isVisible": true,
+                  "position": 2,
+                  "hideSubtitle": false
+                },
+                "axisVisualization": {
+                  "x": {
+                    "isVisible": true,
+                    "axisType": 2
+                  },
+                  "y": {
+                    "isVisible": true,
+                    "axisType": 1
+                  }
+                },
+                "disablePinning": true
+              },
+              "filterCollection": {
+                "filters": []
+              }
+            },
+            "version": 2
+          }
+        }
+      }
+    }
+}
