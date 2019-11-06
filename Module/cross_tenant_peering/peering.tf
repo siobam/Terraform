@@ -1,14 +1,26 @@
 # Step 1. The service principal need to be able to get access to tenants.
+# cross_tenant_client_id belong to primary tenant, skip if peering should be created within the same tenant
 resource "azurerm_azuread_service_principal" "service_principal" {
+  count          = "${var.target_tenant == var.remote_tenant ? 0:1}"
   application_id = "${var.cross_tenant_client_id}"
 }
+# to set role on network we need to get object id, it is not working with application id of service principal.
+data "azurerm_azuread_service_principal" "service_principal" {
+  count          = "${var.target_tenant == var.remote_tenant ? 1:0}"
+  application_id = "${var.cross_tenant_client_id}"
+}
+
+locals {
+  multitenant_service_principal_object_id = "${element(concat(azurerm_azuread_service_principal.service_principal.*.id, list("")),0)}"
+  single_tenant_service_principal_object_id = "${element(concat(data.azurerm_azuread_service_principal.service_principal.*.object_id, list("")),0)}"
+}
+
 # Step 2. Assign Network Contributor role to manage remote network.
-
 resource "azurerm_role_assignment" "role_assignment" {
-
+ # depends_on = ["null_resource.depends_on"]
   scope                = "${var.target_network_id}"
   role_definition_name = "Network Contributor"
-  principal_id         = "${azurerm_azuread_service_principal.service_principal.id}"
+  principal_id         = "${local.multitenant_service_principal_object_id}${local.single_tenant_service_principal_object_id}"
 }
 
 # Step 3. Detect if user peering id already exist in network peering list.
@@ -35,7 +47,6 @@ resource "null_resource" "create_cross_tenant_peering" {
     target_peering_name = "${var.target_peering_name}"
     target_peering = "${local.target_peering}"          
     remote_peering =  "${local.remote_peering}"
-    id = "${jsonencode(var.target_network_peerings)}"
   }
   depends_on = ["azurerm_role_assignment.role_assignment"]
   provisioner "local-exec" {
